@@ -11,7 +11,7 @@ class RentalTest(unittest.TestCase):
 	def setUp(self):
 		self.new_movie = Movie("Dune: Part Two", Movie.NEW_RELEASE)
 		self.regular_movie = Movie("Air", Movie.REGULAR)
-		self.childrens_movie = Movie("Frozen", Movie.CHILDRENS)
+		self.childrens_movie = Movie("Frozen", Movie.CHILDREN)
 		self.customer = Customer("Spencer Reid")
 
 	def test_movie_attributes(self):
