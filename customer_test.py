@@ -26,6 +26,14 @@ class CustomerTest(unittest.TestCase):
 		self.c.add_rental(Rental(self.childrens_movie, 3))  # 1.5
 		self.assertEqual(self.c.get_total_charge(), 14)
 
+	def test_total_rental_points(self):
+		"""Test for total rental points of customer rental."""
+		self.c.add_rental(Rental(self.new_movie, 3))
+		self.c.add_rental(Rental(self.regular_movie, 3))
+		self.c.add_rental(Rental(self.childrens_movie, 3))
+		self.assertEqual(self.c.get_total_rental_points(), 5)
+
+
 	def test_statement(self):
 		stmt = self.c.statement()
 		# get total charges from statement using a regex

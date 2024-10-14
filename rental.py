@@ -51,7 +51,7 @@ class Rental:
 			log.error(f"Movie {self.get_movie()} has unrecognized priceCode {self.get_movie().get_price_code()}")
 		return amount
 
-	def rental_points(self):
+	def get_rental_points(self):
 		"""Calculate rental points for each rental.
 		Returns:
 			the frequency of rental points
