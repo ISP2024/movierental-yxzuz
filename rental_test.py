@@ -1,4 +1,6 @@
 import unittest
+
+import customer
 from customer import Customer
 from rental import Rental
 from movie import Movie
@@ -10,6 +12,7 @@ class RentalTest(unittest.TestCase):
 		self.new_movie = Movie("Dune: Part Two", Movie.NEW_RELEASE)
 		self.regular_movie = Movie("Air", Movie.REGULAR)
 		self.childrens_movie = Movie("Frozen", Movie.CHILDRENS)
+		self.customer = Customer("Spencer Reid")
 
 	def test_movie_attributes(self):
 		"""trivial test to catch refactoring errors or change in API of Movie"""
@@ -34,6 +37,21 @@ class RentalTest(unittest.TestCase):
 		rental = Rental(self.childrens_movie, 6)
 		self.assertEqual(rental.get_price(), 6)
 
-	@unittest.skip("add this test of rental points when you add it to Rental")
 	def test_rental_points(self):
-		self.fail("add this test of frequent renter points")
+		rental = Rental(self.new_movie, 5)
+		self.assertEqual(rental.rental_points(), 5)
+		self.customer.add_rental(rental)
+
+		rental = Rental(self.regular_movie, 5)
+		self.assertEqual(rental.rental_points(), 1)
+		self.customer.add_rental(rental)
+
+		rental = Rental(self.childrens_movie, 5)
+		self.assertEqual(rental.rental_points(), 1)
+		self.customer.add_rental(rental)
+
+		total = sum([rental.rental_points() for rental in self.customer.rentals])
+		self.assertEqual(total, 7)
+
+
+
