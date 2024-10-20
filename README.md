@@ -25,3 +25,11 @@ Dead Code because Movie does not need price_code attribute, get_price_code since
 ### 2.2 what design principle suggests this refactoring? Why?
 Single Responsibility Principle (SRP) because movie and price_code are not relating to each other, so there's no point to keep in movie.
 
+### 5.2 Decide where price_code_for_movie should be implemented
+I think that putting this method in Pricing.py module makes sense the most because
+1. Low Coupling: If there's a new category of PriceStrategy, then it can easily add without import new ConcreteStrategy on by one to rental.
+2. High Cohesion and Single Responsibility Principle: price_code is already related to PriceStrategy.
+
+
+
+

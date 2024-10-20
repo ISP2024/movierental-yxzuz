@@ -8,7 +8,6 @@ class PriceStrategy(ABC):
 
     @classmethod
     def __new__(cls, *args, **kwargs):
-        print(f'Creating instance of {cls.__name__} with args: {args} and kwargs: {kwargs}')
         if not cls._instance:
             cls._instance = super(PriceStrategy, cls).__new__(cls)
         return cls._instance
@@ -64,3 +63,11 @@ class ChildrenPrice(PriceStrategy):
 
     def get_rental_points(self, days: int) -> int:
         return 1
+
+def get_price_code_for_movie(movie):
+    if movie.year == 2024:
+        return NewRelease()
+    for genre in movie.genre:
+        if genre.lower() in ["children", "childrens"]:
+            return ChildrenPrice()
+    return RegularPrice()
