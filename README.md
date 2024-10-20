@@ -18,3 +18,10 @@ Before and after each refactoring you should **run the unit tests**.
 
 See [Resources](https://cpske.github.io/ISP/assignment/movierental/movierental-part1#resources) in the assignment description.
 
+## Rationale
+
+### 2.1. what refactoring signs (code smells) suggest this refactoring?
+Dead Code because Movie does not need price_code attribute, get_price_code since it is being used in rental instead.
+### 2.2 what design principle suggests this refactoring? Why?
+Single Responsibility Principle (SRP) because movie and price_code are not relating to each other, so there's no point to keep in movie.
+
